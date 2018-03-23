@@ -1,0 +1,28 @@
+<template bindable="router">
+    <require from="./navmenu.css"></require>   
+    <nav class="navbar navbar-default" role="navigation">   
+        <div class="navbar-header">    
+            <a class="navbar-brand" href="#/home" id="brand_name">biBERK</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>  
+        </div>   
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav mr-auto">
+                <li repeat.for = "row of router.navigation" class="nav-item ${ row.isActive ? 'link-active' : '' }" >
+                    <a  class="nav-link" href.bind = "row.href">
+                        <span class="glyphicon glyphicon-${ row.settings.icon }"></span> ${ row.title }
+                    </a>
+                </li>
+                <li class="nav-item" >
+                    <a  class="nav-link" route-href="route: Home" >
+                        <span class="glyphicon glyphicon-chevron-down"></span> biBERK Home Page
+                    </a>
+                </li>                
+            </ul>
+        </div>
+   </nav>   
+</template>

@@ -1,0 +1,110 @@
+h2,h3{
+color: rgb(69, 173, 173);
+margin-top: 0;
+}
+
+h3{
+    padding-left: 15px;
+}
+
+span {
+    margin:5px; 
+}
+
+hr{   
+    border: solid .5px black;
+}
+
+label{
+    color: rgb(116, 113, 113);
+}
+
+input[type="text"]{
+    border-top: none;
+    border-left:none;
+    border-right:none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+small{
+    font-size: x-small;
+}
+
+a{
+    color:  rgb(69, 173, 173); 
+}
+
+.container{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.glyphicon-question-sign{
+    color:  rgb(69, 173, 173); 
+}
+
+button.dropdown-toggle{
+    border-top: none;
+    border-left:none;
+    border-right:none;
+    border-bottom-color: rgb(63, 58, 58);
+    background: transparent;
+}
+
+input:focus{
+    border-top: none;
+    border-left:none;
+    border-right:none;
+    border-bottom-color: rgb(69, 173, 173);
+    background: transparent;
+}
+
+.icons {
+    text-align: right;    
+}
+
+.head_icons{
+    color:  rgb(69, 173, 173); 
+}
+
+.purchase {
+    text-align: center;
+}
+
+button.purchase{
+   background-color:rgb(214, 162, 65);
+   color: black;
+   font-weight: bold;
+   border: none;
+}
+
+button.owner_name{
+    color:  rgb(69, 173, 173);
+}
+
+.head-content{
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    h2,h3{
+        text-align: center;
+        }   
+    .row .col-sm-4 p {
+        text-align: center;
+    } 
+   
+    .downPayment-menu li a{
+        text-align: center;
+        }
+    .dropdown {
+        text-align: center;
+    }
+    .dropdown-item list-group-item {
+        text-align: center;
+    }
+    button.owner_name{
+        float: right;
+    }
+}

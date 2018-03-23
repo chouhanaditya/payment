@@ -1,0 +1,23 @@
+<template>
+  <require from="./animation_demo.css"></require>
+  <div class="container-fluid">
+        <div class = "myElement" class.bind="applied_class">
+
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect purchase" click.delegate="animateElementTop()">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+        <br>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect purchase" click.delegate="animateElementLeft()">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect purchase" click.delegate="animateElementBottom()">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect purchase" click.delegate="animateElementRight()">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>  
+        <br> <br>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect purchase" click.delegate="Bounce()">
+          Bounce
+  </div>
+</template>

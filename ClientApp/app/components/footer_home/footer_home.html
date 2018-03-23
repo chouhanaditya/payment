@@ -1,0 +1,62 @@
+<template>
+        <require from="./footer_home.css"></require>
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">              
+                                <ul>products</ul>
+                                <li repeat.for="sub_link of sub_links_products">
+                                        <a href.bind="sub_link.">
+                                                ${sub_link}
+                                        </a>
+                                    </li>
+                                                 
+                        </div> 
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">              
+                                <p>informaton</p>
+                                <a repeat.for="sub_link of sub_links_information">
+                                   ${sub_link} <br> 
+                                </a>                  
+                        </div> 
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">              
+                                <p>legal</p>
+                                <a repeat.for="sub_link of sub_links_legal">
+                                   ${sub_link} <br> 
+                                </a>                  
+                        </div> 
+                        <div class="col-sm-3 col-md-3 col-lg-3 col-xs-6">              
+                                <p>help</p>
+                                <a repeat.for="sub_link of sub_links_help">
+                                   ${sub_link} <br> 
+                                </a>                  
+                        </div> 
+                </div>
+                <br>
+                <br>
+                <div class="row footerText">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                        <p>
+                            <!-- <small> -->
+                                Most policies issued through biBERK.com will be underwritten by Berkshire Hathaway Direct Insurance Company ("BHDIC")
+                                or National Liablity and Fire Insurance Company ("NLF"), which are AM best rated A++ insurers.
+                            <!-- </small> -->
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="row footerText">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <label>
+                                    <span class="glyphicon glyphicon-copyright-mark"></span>  
+                                    <!-- <small> -->
+                                        2017 Berkshire Hathaway Direct Insurance Company
+                                    <!-- </small>                        -->
+                                    <br>
+                                    <span class="glyphicon glyphicon-copyright-mark"></span> 
+                                    <!-- <small> -->
+                                        2017 National Liability & Fire Insurance Company
+                                    <!-- </small> -->
+                            </label>
+                        </div>
+                </div>
+        </div>
+</template>

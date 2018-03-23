@@ -1,0 +1,225 @@
+<template>
+   <require from="./payment.css"></require>
+   <require from="../footer/footer.html"></require>
+   <div class="container-fluid">
+       <div class="row icons">
+           <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">               
+                <span class="glyphicon glyphicon-print head_icons"></span>
+                <span class="glyphicon glyphicon-credit-card head_icons"></span>
+                <span class="glyphicon glyphicon-floppy-save head_icons"></span>                
+            </div>           
+       </div>
+       <br>
+       <div class="row">
+           <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 head-content">
+                <p>get your policy with a down payment of </p>
+                <h2>$${down_payment}</h2>
+                <p><small>total estimated cost $${total_estimated_cost}</small></p>
+           </div>
+       </div>
+       <br>
+       <div class="row">
+            <div class="col-lg-6 col-sm-6  col-md-6 col-xs-12">
+                 <label>payment option</label>
+                 <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Payment Option <span class="caret"></span>
+                        </button>                       
+                        <ul class="dropdown-menu list-group" aria-labelledby="dropdownMenuButton">   
+                            <li repeat.for = "payment_option of payment_options">
+                                    <a class="dropdown-item list-group-item">${payment_option}</a>
+                            </li>
+                        </ul>
+                 </div> 
+            </div>          
+            <div class="col-sm-3  col-md-3  col-lg-3 col-xs-12">                
+                 <label>total estimated cost</label>
+                 <p><b>$${total_estimated_cost}</b></p>
+            </div> 
+            <div class="col-sm-3 col-md-3  col-lg-3 col-xs-12">
+                <label>future installments</label>              
+                <p><b>$${future_installments} </b></p>
+            </div>             
+       </div>
+        <br>
+        <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12  col-lg-12">
+                <label>
+                        employer's liability insurance<span class="glyphicon glyphicon-question-sign"></span>                  
+                </label> 
+                <p> <small>Each Accident/ Policy/ Each Employee Limit</small></p>  
+                <div class="dropdown">                   
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Limit <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu list-group" aria-labelledby="dropdownMenuButton">
+                        <li repeat.for = "limit_option of limit_options">
+                                <a class="dropdown-item list-group-item">${limit_option}</a>
+                        </li>
+                        </ul>
+                </div>                  
+                </div>          
+        </div>
+        <br>
+        <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                        <label>coverage for owners/ officers</label>
+                        <p><small>add the name of each business owner or officer under the coverage preference</small></p>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">  
+                        <button type="button" class="btn btn-link owner_name" click.delegate="add_included_owner()">add name</button>                    
+                        <br> 
+                        <div repeat.for = "included_owner of included_owners">                          
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                                  
+                                        <input class="mdl-textfield__input" type="text" id="included_owner_${included_owner}">
+                                        <label class="mdl-textfield__label" for="included_owner_${included_owner}">included owner/ officer ${included_owner+1}</label>
+                                </div>                           
+                                <button type="button" class="btn btn-link owner_name" click.delegate="remove_included_owner($index)" if.bind="included_owners.length > 1">remove name</button>
+                        </div>                      
+                </div>               
+                <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">  
+                        <button type="button" class="btn btn-link owner_name" click.delegate="add_excluded_owner()">add name</button>
+                        <br>  
+                        <div repeat.for = "excluded_owner of excluded_owners"> 
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                                  
+                                        <input class="mdl-textfield__input" type="text" id="excluded_owner_${excluded_owner}">
+                                        <label class="mdl-textfield__label" for="excluded_owner_${excluded_owner}">excluded owner/ officer ${excluded_owner+1}</label>
+                                </div>                      
+                                <button type="button" class="btn btn-link owner_name" click.delegate="remove_excluded_owner($index)" if.bind="excluded_owners.length > 1">remove name</button>
+                        </div>
+                </div>
+        </div>
+        <hr>
+        <!-- Payment Information -->
+        <div class="row">
+                <h3>payment information</h3>
+                <br>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">  
+                        <label>Pay Using Credit Card</label><br>
+                        <span class="glyphicon glyphicon-credit-card"></span>
+                        <span class="glyphicon glyphicon-credit-card"></span>
+                        <span class="glyphicon glyphicon-credit-card"></span>
+                        <span class="glyphicon glyphicon-credit-card"></span>                    
+                </div> 
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">  
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                                  
+                                <input class="mdl-textfield__input" type="text" id="card_number">
+                                <label class="mdl-textfield__label" for="card_number">card number</label>
+                        </div> 
+                </div>     
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">               
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">                                  
+                                <input class="mdl-textfield__input" type="text" id="expiration_date">
+                                <label class="mdl-textfield__label" for="expiration_date">expiration date</label>
+                        </div>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">  
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                                  
+                                <input class="mdl-textfield__input" type="text" id="name_on_card">
+                                <label class="mdl-textfield__label" for="name_on_card">name on card</label>
+                        </div>
+                </div> 
+        </div>        
+        <hr>
+        <!-- Business Information -->
+        <div class="row">               
+                <h3>business information</h3>
+                <br>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
+                <label><input type="radio" name="business_info" checked.bind="business_info" value="EIN"> federal employer identification number</label>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" show.bind="business_info == 'EIN'">                                  
+                        <input class="mdl-textfield__input" type="text" id="EIN">
+                        <label class="mdl-textfield__label" for="EIN">Enter EIN</label>
+                </div>                  
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
+                <label><input type="radio" name="business_info" checked.bind="business_info" value="SSN"> social security number</label>  
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" show.bind="business_info == 'SSN'">                                  
+                        <input class="mdl-textfield__input" type="text" id="SSN">
+                        <label class="mdl-textfield__label" for="SSN">Enter SSN</label>
+                </div> 
+                </div> 
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">                                 
+                <p>location information</p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="business_address">
+                        <label class="mdl-textfield__label" for="business_address">business address</label>
+                </div> 
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="address_line2">
+                        <label class="mdl-textfield__label" for="address_line2">address line 2</label>
+                </div> 
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                                  
+                        <input class="mdl-textfield__input" type="text" id="city">
+                        <label class="mdl-textfield__label" for="city">city</label>
+                </div>               
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="state">
+                        <label class="mdl-textfield__label" for="state">state</label>
+                </div> 
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="zipcode">
+                        <label class="mdl-textfield__label" for="zipcode">zipcode</label>
+                </div>                                   
+                </div>
+        </div>
+        <hr>
+        <!-- Contact Information -->
+        <div class="row">               
+                <h3>contact information</h3>  
+                <br>           
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">    
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                                <input class="mdl-textfield__input" type="text" id="first_name">
+                                <label class="mdl-textfield__label" for="first_name">first name</label>
+                        </div>              
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">                 
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="last_name">
+                        <label class="mdl-textfield__label" for="last_name">last name</label>
+                </div>                        
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">                 
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="email">
+                        <label class="mdl-textfield__label" for="email">email@email.com</label>
+                </div>                                
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">                 
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >                                  
+                        <input class="mdl-textfield__input" type="text" id="phone_number">
+                        <label class="mdl-textfield__label" for="phone_number">phone-number</label>
+                </div>                      
+                </div>
+        </div>
+        <br>
+        <div class="row">          
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"> 
+                        <p><input type="checkbox" value="use_information"> use this as my billing contact information</p>                  
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12"> 
+                        <p><input type="checkbox" value="agreement"> I have read and agree to the biBERK 
+                        <span><a href=""> terms and conditions</a></span>
+                        </p>
+                </div>      
+        </div>
+        <br>
+        <div class="row">          
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 purchase"> 
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect purchase" click.delegate="">
+                                purchase
+                        </button>
+                </div>
+        </div>
+        <br><br>
+        <!-- Footer -->
+        <div class="row" >
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <footer></footer>
+                </div>
+        </div>
+</div>
+</template>

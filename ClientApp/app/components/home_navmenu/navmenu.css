@@ -1,0 +1,32 @@
+#brand_name{
+    color:  rgb(69, 173, 173); 
+    font-size: x-large;  
+} 
+.link-active{
+    background-color: rgb(202, 202, 228);
+ 
+}
+@media (min-width: 768px) {
+    .navbar {
+        border-radius: 0px;
+        border-width: 0px;        
+    }
+    .navbar-collapse {
+        border-top: 1px solid #444;
+        padding: 0px;
+    }
+    .navbar li {
+        font-size: 15px;
+        margin: 6px;
+    }
+    .navbar li a {
+        padding: 10px 16px;
+        border-radius: 4px;
+    }
+     .navbar a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    } 
+     
+}
